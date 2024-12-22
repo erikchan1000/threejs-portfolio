@@ -1,32 +1,34 @@
+
 export default [
   {
     name: "IsoRoom",
     type: "glbModel",
-    path: "/models/IsometricRoom16.glb",
+    path: `${import.meta.env.BASE_URL}models/IsometricRoom16.glb`,
   },
   {
     name: "Screen",
     type: "videoTexture",
-    path: "/textures/Room_vid10001-0240.mp4",
+    path: `${import.meta.env.BASE_URL}textures/Room_vid10001-0240.mp4`,
   },
   {
     name: "FrameBigFragment",
     type: "shaders",
-    path: "/shaders/FrameBigFragment.glsl",
+    path: `${import.meta.env.BASE_URL}shaders/FrameBigFragment.glsl`,
   },
   {
     name: "FrameBigVertex",
     type: "shaders",
-    path: "/shaders/FrameBigVertex.glsl",
+    path: `${import.meta.env.BASE_URL}shaders/FrameBigVertex.glsl`,
   },
   {
     name: "FrameTopLeftFragment",
     type: "shaders",
-    path: "/shaders/FrameTopLeftFragment.glsl",
+    path: `${import.meta.env.BASE_URL}shaders/FrameTopLeftFragment.glsl`,
   },
   {
     name: "FrameBottomLeftFragment",
     type: "shaders",
-    path: "/shaders/FrameBottomLeftFragment.glsl",
+    path: `${import.meta.env.BASE_URL}shaders/FrameBottomLeftFragment.glsl`,
   },
 ];
+
