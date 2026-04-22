@@ -3,12 +3,15 @@
 import { useRef, useEffect } from 'react';
 import { useTheme } from '@/context/ThemeContext';
 
-// Chart images from Unsplash (stock/trend and regime-style charts)
 const CHART_IMAGES = {
   regimeDetection:
     'https://images.unsplash.com/photo-1643962579371-ba03eec77f87?q=80&w=800&auto=format&fit=crop',
   trendPrice:
     'https://images.unsplash.com/photo-1745270917331-787c80129680?q=80&w=800&auto=format&fit=crop',
+  aiScribe:
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=800&auto=format&fit=crop',
+  codeMinion:
+    'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop',
 } as const;
 
 export default function PageContent() {
@@ -57,10 +60,6 @@ export default function PageContent() {
               <h1 className="hero-main-title">Erik Chan</h1>
               <p className="hero-main-description">Full Stack Software Engineer</p>
             </div>
-            <div className="hero-second">
-              <p className="hero-second-subheading">MY</p>
-              <p className="hero-second-description">P.O.R.T.F.O.L.I.O</p>
-            </div>
           </div>
         </section>
 
@@ -81,13 +80,13 @@ export default function PageContent() {
           <div className="section-detail-wrapper">
             <h3 className="section-heading">About Me</h3>
             <p className="section-text">
-              Hello, I am Erik Chan, a Full Stack Software Engineer currently at Stackline in Seattle, WA.
+              Hello, I am Erik Chan, a Full Stack Software Engineer at Stackline in Seattle, WA.
               I&apos;m a lifelong learner passionate about new developments in technology and their applications!
               <br /><br />
-              With expertise in React.js, Next.js, Node.js, and cloud technologies, I&apos;ve architected
-              role-based authorization systems, built high-performance e-commerce solutions, and led
-              machine learning initiatives. I&apos;m currently expanding my skills in Rust, Go, and advanced
-              AI/ML technologies.
+              I work across the stack on distributed systems and large-scale e-commerce automation —
+              architecting checkout-as-a-service infrastructure, building Go/TypeScript scheduling microservices,
+              and designing parallel execution frameworks. Outside of work I build AI agents, trading
+              infrastructure, and developer tooling in Python, Rust, and TypeScript.
             </p>
             <button type="button" className="section-button">
               <a href="/others/resume.pdf" target="_blank" rel="noreferrer">My resume →</a>
@@ -110,14 +109,33 @@ export default function PageContent() {
             <span className="section-number blue-text">02</span>
           </div>
           <div className="section-detail-wrapper">
+            <h3 className="section-heading">Stackline | Seattle, WA</h3>
+            <p className="section-text section-meta">Full Stack Software Engineer · Jul 2024 – Present</p>
+            <p className="section-text">
+              Redesigned Amazon Vendor Central and Amazon Seller Central crawlers using custom Chrome browser
+              automation, migrating to a state-machine-based architecture that reduced erroneous crawls by 40%
+              and improved reliability.
+            </p>
+            <p className="section-text">
+              Architected and built a distributed server-side checkout system offering checkout-as-a-service to
+              enterprise clients, processing 600,000+ orders annually with 99.9% uptime.
+            </p>
+            <p className="section-text">
+              Designed and implemented a time-zone-aware scheduling microservice for Amazon Ads campaign
+              management using Go and TypeScript, automating 100,000+ campaign operations monthly.
+            </p>
+            <p className="section-text">
+              Built a parallel execution framework for content-generation workflows that increased system
+              throughput by 400% while maintaining ACID data consistency across distributed systems.
+            </p>
             <h3 className="section-heading">Breaking Hits | Los Angeles, CA</h3>
-            <p className="section-text section-meta">Oct 2023 – Jul 2024</p>
+            <p className="section-text section-meta">Founding Full Stack Engineer · Oct 2023 – Jul 2024</p>
             <p className="section-text">
               Built production ML pipelines processing 100,000+ audio tracks daily using Wav2Vec and BERT models,
               improving music content classification accuracy by 25% and reducing manual tagging.
             </p>
             <h3 className="section-heading">Edenspiekermann | Los Angeles, CA</h3>
-            <p className="section-text section-meta">Mar 2023 – Sep 2023</p>
+            <p className="section-text section-meta">Full Stack Software Engineer · Mar 2023 – Sep 2023</p>
             <p className="section-text">
               Led development of production Next.js applications for banking and biotech enterprise clients,
               significantly improving performance metrics, system reliability, and observability monitoring over legacy systems.
@@ -126,6 +144,19 @@ export default function PageContent() {
               Built reusable UI component library in TypeScript with comprehensive documentation used across 5+ projects,
               reducing frontend development time by 30% and ensuring design consistency.
             </p>
+            <h3 className="section-heading">Skills</h3>
+            <p className="section-text">
+              <b>Languages:</b> JavaScript (ES6+), Python 3, TypeScript, Rust, Kotlin, Java, C++, C# (.NET Core), SQL, Go
+            </p>
+            <p className="section-text">
+              <b>Frameworks:</b> TensorFlow, PyTorch, React.js, Next.js, Node.js, Express, Vue.js, React Native, Flask, FastAPI
+            </p>
+            <p className="section-text">
+              <b>Technologies:</b> Docker, Kubernetes, Google Cloud Platform (GCP), Amazon Web Services (AWS), REST APIs, GraphQL, Git, CI/CD, Redis, Kafka
+            </p>
+            <h3 className="section-heading">Education</h3>
+            <p className="section-text section-meta">University of California, Riverside · Sep 2018 – Jun 2022</p>
+            <p className="section-text">B.S. Computer Science · GPA: 3.90</p>
             <button type="button" className="section-button">
               <a href="/others/resume.pdf" target="_blank" rel="noreferrer">My resume →</a>
             </button>
@@ -155,7 +186,12 @@ export default function PageContent() {
                 <h3 className="section-heading">Real-Time Trading Infrastructure</h3>
                 <p className="section-text section-meta">Python, Rust</p>
                 <p className="section-text">
-                  High-performance trading infrastructure with regime detection for market state analysis and real-time execution.
+                  Engineered a low-latency market data pipeline capable of handling 10,000+ events per second
+                  with sub-100 millisecond processing latency for high-frequency trading applications.
+                </p>
+                <p className="section-text">
+                  Designed an automated risk management system using thin-book market-making strategies,
+                  cross-exchange arbitrage detection, and regime-switching models to minimize downside exposure.
                 </p>
               </div>
             </div>
@@ -167,12 +203,50 @@ export default function PageContent() {
                 <h3 className="section-heading">AI Hedge Fund</h3>
                 <p className="section-text section-meta">Flask, Next.js, LangChain, Pandas, NumPy</p>
                 <p className="section-text">
-                  Server core that fetches financial data and calculates metrics, with LangChain agents that
-                  evaluate financial metrics to construct investment decisions, displayed through MCP frontend.
+                  Built a production financial data pipeline ingesting real-time market feeds from multiple
+                  cryptocurrency and equity exchanges with sub-second data freshness guarantees.
+                </p>
+                <p className="section-text">
+                  Designed LLM-powered autonomous research agents capable of automating complex financial
+                  analysis tasks, reducing manual research time by 10+ hours per week for portfolio managers.
                 </p>
                 <button type="button" className="section-button">
                   <a href="https://github.com/erikchan1000/HEDGE-FUND" target="_blank" rel="noreferrer">Github repo →</a>
                 </button>
+              </div>
+            </div>
+            <div className="project-card">
+              <div className="project-card__image-wrap">
+                <img src={CHART_IMAGES.aiScribe} alt="Clinician using a tablet — AI medical scribe" className="project-card__image" />
+              </div>
+              <div className="project-card__body">
+                <h3 className="section-heading">AI Scribe</h3>
+                <p className="section-text section-meta">Flutter, TypeScript, Fastify, Python, GCP, Vertex AI</p>
+                <p className="section-text">
+                  HIPAA-aligned medical scribe for home-health clinicians: captures visit conversations on-device,
+                  generates OASIS and routine visit documentation with Vertex AI, and syncs finalized charting to EHR systems.
+                </p>
+                <p className="section-text">
+                  Two-service architecture on Cloud Run — a Fastify CRUD API and a Python Pub/Sub processing
+                  worker — with on-device STT, SSE event streaming, and FHIR integration via the Cloud Healthcare API.
+                </p>
+              </div>
+            </div>
+            <div className="project-card">
+              <div className="project-card__image-wrap">
+                <img src={CHART_IMAGES.codeMinion} alt="Terminal with code — autonomous coding agent" className="project-card__image" />
+              </div>
+              <div className="project-card__body">
+                <h3 className="section-heading">Code Minion</h3>
+                <p className="section-text section-meta">Go, Temporal, TypeScript, MCP, Goose</p>
+                <p className="section-text">
+                  Agentic harness for one-shot, end-to-end software delivery — accepts scoped engineering tasks
+                  and returns review-ready merge requests with traceable outputs and audit trails.
+                </p>
+                <p className="section-text">
+                  Temporal-orchestrated workflow with isolated execution environments, a ToolShed MCP server for
+                  task-scoped tool access, and deterministic quality gates (lint, tests, CI policy) before publish.
+                </p>
               </div>
             </div>
           </div>
@@ -209,20 +283,6 @@ export default function PageContent() {
                 <span><a href="mailto:erikchan1010@gmail.com" target="_blank"><i className="fa-regular fa-envelope" /></a></span>
               </li>
             </ul>
-            <h3 className="section-heading">Acknowledgement</h3>
-            <p className="section-text">Credits to <b>Bokoko33</b>&apos;s website which I drew inspiration from</p>
-            <button type="button" className="section-button bot-button">
-              <a href="https://bokoko33.me/" target="_blank" rel="noreferrer">Bokoko33&apos;s Website →</a>
-            </button>
-            <button type="button" className="section-button bot-button">
-              <a href="https://twitter.com/bokoko33" target="_blank" rel="noreferrer">Bokoko33&apos;s Twitter →</a>
-            </button>
-            <p className="section-text">
-              Also credits to <b>Andrew Woan</b>&apos;s youtube tutorial on gsap timelines and three.js
-            </p>
-            <button type="button" className="section-button bot-button">
-              <a href="https://www.youtube.com/@andrewwoan" target="_blank" rel="noreferrer">Andrew Woan&apos;s Youtube →</a>
-            </button>
           </div>
         </section>
       </div>

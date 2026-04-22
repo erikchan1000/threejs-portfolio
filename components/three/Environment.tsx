@@ -27,8 +27,8 @@ export default function Environment() {
     } else {
       gsap.to(sunlight.color, { r: 1, g: 1, b: 1 });
       gsap.to(ambient.color, { r: 1, g: 1, b: 1 });
-      gsap.to(sunlight, { intensity: 2 });
-      gsap.to(ambient, { intensity: 1 });
+      gsap.to(sunlight, { intensity: 1.0 });
+      gsap.to(ambient, { intensity: 0.4 });
     }
   }, [theme]);
 
@@ -37,7 +37,7 @@ export default function Environment() {
       <directionalLight
         ref={sunlightRef}
         color="#ffffff"
-        intensity={2}
+        intensity={1.0}
         position={[3, 20, 7]}
         castShadow
         shadow-mapSize={[4096, 4096]}
@@ -55,7 +55,7 @@ export default function Environment() {
           ]}
         />
       </directionalLight>
-      <ambientLight ref={ambientRef} color="#ffffff" intensity={1} />
+      <ambientLight ref={ambientRef} color="#ffffff" intensity={0.4} />
     </>
   );
 }

@@ -504,10 +504,15 @@ a {
 .section {
   position: relative;
   width: 50%;
-  padding: 150px 4%;
+  min-height: 100vh;
+  padding: 60px 4%;
   margin: 0;
   background-color: var(--color-background);
   overflow: hidden;
+}
+
+.fourth-section {
+  min-height: 100vh;
 }
 
 .left {
@@ -524,22 +529,22 @@ a {
 
 .section-intro-wrapper {
   position: relative;
-  padding: 20% 5%;
+  padding: 6% 5%;
   border-bottom: 2px solid var(--color-secondary);
-  padding-bottom: 400px;
+  padding-bottom: 240px;
   transition: border-bottom 0.5s;
 }
 
 .section-detail-wrapper {
   position: relative;
-  padding: 10% 5%;
+  padding: 4% 5%;
 }
 
 .section-heading {
   font-size: 18px;
   font-weight: 700;
   line-height: 1.8;
-  margin-top: 64px;
+  margin-top: 32px;
   color: var(--color-text);
 }
 

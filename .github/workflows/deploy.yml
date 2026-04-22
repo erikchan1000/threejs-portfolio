@@ -3,7 +3,10 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - master # Change this to your default branch if it's not `main`
+      - master
+  pull_request:
+    branches:
+      - master
 
 permissions:
   contents: read
@@ -27,7 +30,8 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18' # Use the Node.js version compatible with your project
+          node-version: '20'
+          cache: 'npm'
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -38,12 +42,17 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Add .nojekyll
+        run: touch ./out/.nojekyll
+
       - name: Upload artifact
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
 
   deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     environment:
       name: github-pages

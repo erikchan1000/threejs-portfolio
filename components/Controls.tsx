@@ -226,33 +226,6 @@ export default function Controls() {
         });
       });
 
-      const frameBig = roomChildren.FrameBig;
-      const frameTopLeft = roomChildren.FrameTopLeft;
-      const frameBottomLeft = roomChildren.FrameBottomLeft;
-      const getAlphaUniform = (obj: THREE.Object3D) => {
-        const mesh = obj?.children?.[2] as THREE.Mesh | undefined;
-        const mat = mesh?.material;
-        return mat instanceof THREE.ShaderMaterial ? mat.uniforms?.alpha : null;
-      };
-      const alphaBig = getAlphaUniform(frameBig);
-      const alphaTop = getAlphaUniform(frameTopLeft);
-      const alphaBottom = getAlphaUniform(frameBottomLeft);
-
-      if (alphaBig && alphaTop && alphaBottom) {
-        gsap.timeline({
-          scrollTrigger: {
-            trigger: '.second-move',
-            start: 'top top',
-            end: 'bottom bottom',
-            scrub: 0.5,
-            invalidateOnRefresh: true,
-          },
-        })
-          .to(alphaBig, { value: 1.0 }, 'same')
-          .to(alphaTop, { value: 1.0 }, 'same')
-          .to(alphaBottom, { value: 1.0 }, 'same');
-      }
-
       gsap.timeline({
         scrollTrigger: {
           trigger: '.first-move',

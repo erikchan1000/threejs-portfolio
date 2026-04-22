@@ -5,7 +5,6 @@ import { useRef, useLayoutEffect, useMemo, useEffect } from 'react';
 import { useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
-import { FileLoader } from 'three/src/loaders/FileLoader.js';
 import gsap from 'gsap';
 import { ASSETS, DRACO_PATH } from '@/lib/assets';
 import { VideoTextureLoader } from '@/lib/VideoTextureLoader';
@@ -28,13 +27,6 @@ export default function Room() {
   const standingSpotLightRef = useRef<THREE.SpotLight>(null);
 
   const gltf = useLoader(GLTFLoader, ASSETS.IsoRoom, extendGLTFLoader);
-  const [vertexShader, frameBigFrag, frameTopLeftFrag, frameBottomLeftFrag] =
-    useLoader(FileLoader, [
-      ASSETS.FrameBigVertex,
-      ASSETS.FrameBigFragment,
-      ASSETS.FrameTopLeftFragment,
-      ASSETS.FrameBottomLeftFragment,
-    ]) as [string, string, string, string];
   const screenTexture = useLoader(VideoTextureLoader, ASSETS.Screen) as THREE.VideoTexture;
 
   const roomChildren = useRef<Record<string, THREE.Object3D>>({});
@@ -58,54 +50,6 @@ export default function Room() {
         mesh.material = new THREE.MeshBasicMaterial({ map: screenTexture });
         mesh.rotation.x = Math.PI;
         mesh.translateZ(0.01);
-      }
-
-      if (child.name === 'FrameBig') {
-        const mesh = child.children[2] as THREE.Mesh;
-        mesh.material = new THREE.ShaderMaterial({
-          vertexShader,
-          fragmentShader: frameBigFrag,
-          blending: THREE.CustomBlending,
-          blendEquation: THREE.AddEquation,
-          blendSrc: THREE.SrcAlphaFactor,
-          blendDst: THREE.OneMinusSrcAlphaFactor,
-          uniforms: {
-            iTime: { value: 0 },
-            alpha: { value: 0 },
-          },
-        });
-      }
-
-      if (child.name === 'FrameTopLeft') {
-        const mesh = child.children[2] as THREE.Mesh;
-        mesh.material = new THREE.ShaderMaterial({
-          vertexShader,
-          fragmentShader: frameTopLeftFrag,
-          blending: THREE.CustomBlending,
-          blendEquation: THREE.AddEquation,
-          blendSrc: THREE.SrcAlphaFactor,
-          blendDst: THREE.OneMinusSrcAlphaFactor,
-          uniforms: {
-            iTime: { value: 0 },
-            alpha: { value: 0 },
-          },
-        });
-      }
-
-      if (child.name === 'FrameBottomLeft') {
-        const mesh = child.children[2] as THREE.Mesh;
-        mesh.material = new THREE.ShaderMaterial({
-          vertexShader,
-          fragmentShader: frameBottomLeftFrag,
-          blending: THREE.CustomBlending,
-          blendEquation: THREE.AddEquation,
-          blendSrc: THREE.SrcAlphaFactor,
-          blendDst: THREE.OneMinusSrcAlphaFactor,
-          uniforms: {
-            iTime: { value: 0 },
-            alpha: { value: 0 },
-          },
-        });
       }
 
       if (child.name === 'Platform') {
@@ -169,10 +113,6 @@ export default function Room() {
     };
   }, [
     actualRoom,
-    vertexShader,
-    frameBigFrag,
-    frameTopLeftFrag,
-    frameBottomLeftFrag,
     screenTexture,
     roomRef,
     roomChildrenRef,
@@ -202,23 +142,6 @@ export default function Room() {
   }, [theme]);
 
   useFrame(() => {
-    const rc = roomChildren.current;
-    const frameBig = rc.FrameBig;
-    const frameTopLeft = rc.FrameTopLeft;
-    const frameBottomLeft = rc.FrameBottomLeft;
-    if (frameBig?.children[2]) {
-      const mat = (frameBig.children[2] as THREE.Mesh).material as THREE.ShaderMaterial;
-      if (mat.uniforms?.iTime) mat.uniforms.iTime.value = performance.now() / 200;
-    }
-    if (frameTopLeft?.children[2]) {
-      const mat = (frameTopLeft.children[2] as THREE.Mesh).material as THREE.ShaderMaterial;
-      if (mat.uniforms?.iTime) mat.uniforms.iTime.value = performance.now() / 200;
-    }
-    if (frameBottomLeft?.children[2]) {
-      const mat = (frameBottomLeft.children[2] as THREE.Mesh).material as THREE.ShaderMaterial;
-      if (mat.uniforms?.iTime) mat.uniforms.iTime.value = performance.now() / 200;
-    }
-
     lerp.current.current = gsap.utils.interpolate(
       lerp.current.current,
       lerp.current.target,
