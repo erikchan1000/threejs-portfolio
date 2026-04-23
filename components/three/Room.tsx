@@ -18,6 +18,33 @@ function extendGLTFLoader(loader: GLTFLoader) {
   loader.setDRACOLoader(draco);
 }
 
+/** Picture-frame textures are reused on unrelated meshes in the GLB; drop maps on these objects only. */
+const NO_SHARED_PICTURE_MAP = new Set([
+  'Steps',
+  'Steps.001',
+  'Steps.002',
+  'Lantern',
+  'Mail box',
+]);
+
+function stripBaseColorMapFromSubtree(root: THREE.Object3D) {
+  root.traverse((child) => {
+    if (!(child instanceof THREE.Mesh)) return;
+    const strip = (m: THREE.Material) => {
+      if (!('map' in m)) return m;
+      const mat = m as THREE.MeshStandardMaterial & { map?: THREE.Texture | null };
+      if (!mat.map) return m;
+      const next = mat.clone() as typeof mat;
+      next.map = null;
+      next.needsUpdate = true;
+      return next;
+    };
+    child.material = Array.isArray(child.material)
+      ? child.material.map(strip)
+      : strip(child.material);
+  });
+}
+
 export default function Room() {
   const { roomRef, roomChildrenRef } = useSceneRefs();
   const { setWorldReady } = useScene();
@@ -68,6 +95,10 @@ export default function Room() {
       }
 
       roomChildren.current[child.name] = child;
+    });
+
+    scene.children.forEach((child) => {
+      if (NO_SHARED_PICTURE_MAP.has(child.name)) stripBaseColorMapFromSubtree(child);
     });
 
     const spotLight = new THREE.SpotLight(0xffffff, 0, 5, 0, 0.3);

@@ -266,10 +266,10 @@ export default function Controls() {
           secondPartTl.add(gsap.to(child.children[0].position, { x: 0, y: 0, z: 0, ease: 'back.out(2)', duration: 0.3 }), 'first');
           secondPartTl.add(gsap.to(child.children[1].position, { x: 0, y: 0, z: 0, ease: 'back.out(2)', duration: 0.3 }), 'first');
         }
-        if (child.name === 'Mail_box') secondPartTl.add(gsap.to(child.scale, { x: 1, y: 1, z: 1, ease: 'back.out(2)', duration: 0.3 }));
+        if (child.name === 'Mail box') secondPartTl.add(gsap.to(child.scale, { x: 1, y: 1, z: 1, ease: 'back.out(2)', duration: 0.3 }));
         if (child.name === 'Steps') secondPartTl.add(gsap.to(child.scale, { x: 1, y: 1, z: 1, ease: 'back.out(2)', duration: 0.3 }));
-        if (child.name === 'Steps001') secondPartTl.add(gsap.to(child.scale, { x: 1, y: 1, z: 1, ease: 'back.out(2)', duration: 0.3 }), '-=0.2');
-        if (child.name === 'Steps002') secondPartTl.add(gsap.to(child.scale, { x: 1, y: 1, z: 1, ease: 'back.out(2)', duration: 0.3 }), '-=0.2');
+        if (child.name === 'Steps.001') secondPartTl.add(gsap.to(child.scale, { x: 1, y: 1, z: 1, ease: 'back.out(2)', duration: 0.3 }), '-=0.2');
+        if (child.name === 'Steps.002') secondPartTl.add(gsap.to(child.scale, { x: 1, y: 1, z: 1, ease: 'back.out(2)', duration: 0.3 }), '-=0.2');
         if (child.name === 'Lantern') secondPartTl.add(gsap.to(child.scale, { x: 1, y: 1, z: 1, ease: 'back.out(2)', duration: 0.3 }));
       });
     });

@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "blender": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "/Users/erikchan/Documents/code/blender-mcp",
+        "--native-tls",
+        "blender-mcp"
+      ],
+      "env": {}
+    }
+  }
+}
