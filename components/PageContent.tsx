@@ -3,6 +3,9 @@
 import { useRef, useEffect } from 'react';
 import { useTheme } from '@/context/ThemeContext';
 
+const RESUME_PDF_URL =
+  'https://erikchan1000.github.io/threejs-portfolio/others/resume.pdf' as const;
+
 const CHART_IMAGES = {
   regimeDetection:
     'https://images.unsplash.com/photo-1643962579371-ba03eec77f87?q=80&w=800&auto=format&fit=crop',
@@ -89,7 +92,7 @@ export default function PageContent() {
               infrastructure, and developer tooling in Python, Rust, and TypeScript.
             </p>
             <button type="button" className="section-button">
-              <a href="/others/resume.pdf" target="_blank" rel="noreferrer">My resume →</a>
+              <a href={RESUME_PDF_URL} target="_blank" rel="noreferrer">My resume →</a>
             </button>
           </div>
         </section>
@@ -158,7 +161,7 @@ export default function PageContent() {
             <p className="section-text section-meta">University of California, Riverside · Sep 2018 – Jun 2022</p>
             <p className="section-text">B.S. Computer Science · GPA: 3.90</p>
             <button type="button" className="section-button">
-              <a href="/others/resume.pdf" target="_blank" rel="noreferrer">My resume →</a>
+              <a href={RESUME_PDF_URL} target="_blank" rel="noreferrer">My resume →</a>
             </button>
           </div>
         </section>
